@@ -11,6 +11,12 @@ body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
   text-decoration: none;
 }
 
+$font-family-english: "Montserrat", sans-serif;
+
+// レイアウト幅
+$layout-width-canvas: 1280px;
+$layout-width-inner: 1200px;
+
 //マップ型変数breakpointsを定義
 $breakpoints: (
 //キー　　値
@@ -19,6 +25,8 @@ $breakpoints: (
 'sm': 'screen and (max-width: 767px)', //767px以下（スマホ）用の表示
 'md': 'screen and (max-width: 1120px)', //768px以上（タブレット・PC）用の表示
 'lg': 'screen and (min-width: 768px)',
+"tab-down": "(max-width: #{$layout-width-inner - 1px})",
+	"tab-up": "(min-width: #{$layout-width-inner})",
 ) !default;
 
 //メディアクエリ用のmixinを定義。デフォ値はmd
@@ -108,6 +116,47 @@ section{
 }
 
 /*===================================
+# margin
+===================================*/
+.mb50{
+  margin-bottom: 50px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mb20{
+  margin-bottom: 20px;
+}
+
+/*===================================
+# センターライン
+===================================*/
+.center-line{
+	text-align: center;
+	display: flex;
+	margin-bottom: 30px;
+	&::before,
+	&::after{
+		flex: 1;
+		height: 2px;
+		content: "";
+		background-color: #fff;
+		position: relative;
+		top: -0.6rem;
+	}
+	&::before{
+		margin-right: 1rem;
+		margin-top: 30px;
+	}
+	&::after{
+		margin-left: 1rem;
+		margin-top: 30px;
+	}
+}
+
+/*===================================
 # メディアクエリ
 ===================================*/
 
@@ -132,7 +181,13 @@ section{
 ===================================*/
 .header {
   background-color: $primary-color;
-  height: 100vh;
+  height: 90vh;
+}
+
+.mainvisual-inner{
+  height: 59.846vw;
+  background: url(/img/lp_mv.png) center center/cover no-repeat;
+	position: relative;
 }
 
 
@@ -218,11 +273,17 @@ section{
 
 .link-item {
   width: 48%;
+  & a {
+    padding: 1.5rem 2rem;
+    display: block;
+  }
+  &:hover{
+    opacity: .8;
+  }
 }
 
 .mail-box{
   background-color: #d22525;
-  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 3px #000;
   border: 2px solid #000;
@@ -236,7 +297,6 @@ section{
 
 .line-box{
   background-color: #2EAA25;
-  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 3px #000;
   border: 2px solid #000;
@@ -263,7 +323,7 @@ section{
   color: $bold-color;
   font-size: 30px;
   text-align: center;
-
+  margin-bottom: 50px;
   & .alert_red{
     color: red;
     font-size: 40px;
@@ -400,6 +460,7 @@ section{
 
 
 .alert02_subtitle{
+  margin-top: 50px;
   text-align: center;
   font-size: 50px;
   color: $primary-color;
@@ -416,7 +477,7 @@ section{
   padding-top: 50px;
 }
 .reason_title{
-// text-align: center;
+  margin-bottom: 50px;
 
 &__box {
   width: 50%;
@@ -496,6 +557,14 @@ section{
 
 
 /*===================================
+# service
+===================================*/
+
+.service_title {
+  margin-bottom: 100px;
+}
+
+/*===================================
 # price
 ===================================*/
 .price{
@@ -509,6 +578,7 @@ section{
 .price_subtitle{
   color: #595757;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .price_areabox__list{
@@ -742,4 +812,696 @@ section{
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+
+
+/*===================================
+# question
+===================================*/
+
+.question-title {
+  color: #fff;
+  padding: 10px;
+  background-color: #0A1484;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.faq-itemQuestion {
+  position: relative;
+  align-items: center;
+	padding: 16px 0 14px;
+	line-height: (24 / 16);
+
+  &:not(:last-child){
+    margin-bottom: 30px;
+  }
+}
+
+
+
+/*===================================
+# contact
+===================================*/
+
+
+.contact {
+  background: url(../img/LINE_ALBUM_20230111_230111_2.jpg) center (center / cover);
+	padding: 40px 16px;
+
+	@include mq('sm') {
+		margin-top: 120px;
+		padding: 60px 40px;
+	}
+
+
+  input {
+    &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px #fff inset;
+    }
+
+    &[type="checkbox"] {
+      display: none;
+    }
+  }
+
+  .util-ttl {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+.contact-inner {
+  background: #fff;
+  border-radius: 12px;
+  margin: 0 auto;
+  max-width: 960px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.contact-header {
+  background-color: #000;
+  box-shadow: 0 0 4px #3e3e3e;
+  padding: 32px 16px;
+	position: relative;
+
+	@include mq('md') {
+		padding: 58px 0 54px;
+	}
+
+	@include mq('sm') {
+		padding-top: 38px;
+		padding-bottom: 38px;
+	}
+
+  &:before {
+    background: url(../img/LINE_ALBUM_20230111_230111_2.jpg) center (center / cover) no-repeat;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.contact-headerInner {
+  position: relative;
+}
+
+.contact-headerTxt {
+  color: #fff;
+  text-align: center;
+  font-size: 1.4rem;
+	margin-top: 4px;
+
+	@include mq('md') {
+		font-size: 1.6rem;
+		margin-top: 8px;
+		text-align: center;
+	}
+
+	@include mq('sm') {
+		line-height: (20 / 14);
+	}
+}
+
+.contact-content {
+  padding: 60px 120px 60px;
+
+	@include mq('sm') {
+		padding: 36px 12px 38px;
+	}
+}
+
+.contact-list {
+	font-size: 1.6rem;
+
+	@include mq('md') {
+		font-size: 1.6rem;
+	}
+}
+
+.contact-item {
+  + .contact-item {
+		margin-top: 27px;
+
+		@include mq('sm') {
+			margin-top: 26px;
+		}
+
+		&.contact-item--radio {
+			margin-top: 26px;
+		}
+
+		&.contact-item--message {
+			margin-top: 26px;
+		}
+	}
+
+	&:not(.mod-message) {
+			display: flex;
+	}
+
+  input {
+		&[type="text"],
+    &[type="phone"],
+		&[type="email"] {
+      border: none;
+      border-bottom: solid 1px #3e3e3e;
+      border-radius: 0;
+      font-size: 1.6rem;
+			font-weight: 400;
+			font-family: inherit;
+      letter-spacing: .03em;
+      padding: 3px 12px 2px;
+      position: relative;
+			width: 100%;
+			color:  $primary-color;
+
+			@include mq('md') {
+				font-size: 1.6rem;
+			}
+
+			@include mq('sm') {
+				padding-left: 0;
+				padding-right: 0;
+				padding-top: 1px;
+				padding-bottom: 1px;
+				font-size: 1.4rem;
+			}
+    }
+
+    &[type="text"] {
+      &:hover, &:focus {
+        border-color: #4973ff;
+        outline: none;
+      }
+    }
+
+    &[type="email"] {
+			&:hover,
+			&:focus {
+        border-color: #4973ff;
+        outline: none;
+      }
+    }
+
+    &[type="text"] {
+			&:hover,
+			&:focus {
+				+ .contact-focusLine {
+					opacity: 1;
+				}
+      }
+    }
+
+    &[type="email"] {
+			&:hover,
+			&:focus {
+				+ .contact-focusLine {
+					opacity: 1;
+				}
+      }
+    }
+
+    &[type="radio"] {
+      display: none;
+      vertical-align: text-top;
+    }
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    border: solid 1px #3e3e3e;
+    border-radius: 0;
+    color: $primary-color;
+		font-size: 1.6rem;
+		font-family: inherit;
+		font-weight: 500;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    padding: 0 34px 0 8px;;
+		transition: box-shadow .2s;
+
+		@include mq('md') {
+			letter-spacing: 0.1em;
+			width: 260px;
+
+			&:hover {
+				-webkit-box-shadow: 0 0 4px #4973ff;
+				box-shadow: 0 0 4px #4973ff;
+			}
+		}
+
+		@include mq('sm') {
+			font-size: 1.4rem;
+			line-height: 38px;
+			height: 38px;
+			width: 100%;
+		}
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
+
+  textarea {
+    border: solid 1px #3e3e3e;
+    border-radius: 0;
+    font-size: 1.6rem;
+    height: 160px;
+    margin-top: 3px;
+    outline: none;
+    padding: .5em;
+    resize: vertical;
+    transition: .2s;
+		width: 100%;
+
+		@include mq('md') {
+			font-size: 2.1rem;
+			height: 200px;
+
+			&:hover {
+				border-color: #4973ff;
+				box-shadow: 0 0 4px #4973ff;
+			}
+		}
+
+		@include mq('sm') {
+			margin-top: 12px;
+		}
+
+    &:focus {
+      border-color: #4973ff;
+      box-shadow: 0 0 4px #4973ff;
+    }
+  }
+}
+
+.contact-inputBox {
+	position: relative;
+  flex: 0 1 100%;
+
+	@include mq('sm') {
+		margin-top: 3px;
+
+		.contact-item--radio & {
+			margin-top: 7px;
+		}
+	}
+}
+
+.contact-selectBox {
+  position: relative;
+
+	@include mq('sm') {
+		margin-top: 12px;
+	}
+
+  &:after {
+    border-bottom: solid 2px #3e3e3e;
+    border-right: solid 2px #3e3e3e;
+    content: '';
+    display: block;
+    height: 8px;
+    position: absolute;
+    right: 16px;
+    top: 14px;
+    transform: rotate(45deg);
+    width: 8px;
+  }
+}
+
+.contact-focusLine {
+  bottom: 1px;
+  box-shadow: 0 2px 4px rgba(73, 115, 255, 0.6);
+  display: block;
+  height: 1px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity .2s;
+  width: 100%;
+}
+
+.contact-itemTtl {
+  align-items: center;
+  display: flex;
+	flex: 0 0 188px;
+	font-weight: bold;
+}
+
+.contact-requireLabel {
+  background: #ff4646;
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 16px;
+  margin-left: 12px;
+	padding: 4px;
+	text-align: center;
+	width: 40px;
+
+	@include mq('sm') {
+		margin-left: 20px;
+	}
+}
+
+.contact-privacy {
+  display: inline-block;
+	margin-top: 16px;
+
+	@include mq('md') {
+		margin-top: 32px;
+	}
+
+	@include mq('sm') {
+		margin-top: 26px;
+	}
+}
+
+.contact-privacyLabel {
+  cursor: pointer;
+  display: block;
+  font-size: 1.6rem;
+  padding-left: 38px;
+	position: relative;
+	font-weight: 700;
+
+	@include mq('md') {
+		font-size: 1.8rem;
+		padding-left: 42px;
+	}
+
+  &:before {
+    background: #fff;
+    border: solid 1px #3e3e3e;
+    content: '';
+    display: block;
+    height: 16px;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    transition: 0.2s;
+		width: 16px;
+
+		@include mq('md') {
+			height: 20px;
+			width: 20px;
+		}
+
+		@include mq('sm') {
+			width: 18px;
+			height: 18px;
+		}
+	}
+
+	@include mq('md') {
+		&:hover {
+			&::before {
+				border-color: #4973ff;
+				box-shadow: 0 0 4px #4973ff;
+			}
+		}
+
+		&:active {
+			&::before {
+				background-color: rgba(73, 115, 255, 0.2);
+				box-shadow: none;
+			}
+		}
+	}
+
+  &:after {
+    border-bottom: solid 2px #4973ff;
+    border-left: solid 2px #4973ff;
+    content: '';
+    display: block;
+    height: 6px;
+    left: 2px;
+    opacity: 0;
+    position: absolute;
+    top: 6px;
+    transform: rotate(-45deg);
+    transition: 0.2s;
+		width: 12px;
+
+		@include mq('md') {
+			left: 4px;
+			top: 8px;
+		}
+
+		@include mq('sm') {
+			left: 3px;
+		}
+  }
+}
+
+input[type="checkbox"]:checked + .contact-privacyLabel:after {
+  opacity: 1;
+}
+
+.contact-radio {
+	display: inline-block;
+	padding: 0;
+
+	+ .contact-radio {
+		@include mq('md') {
+			margin-left: 32px;
+		}
+
+		@include mq('sm') {
+			margin-left: 32px;
+		}
+	}
+}
+
+.contact-radioLabel {
+  padding-left: 22px;
+  position: relative;
+
+  &:before {
+    background: #fff;
+    border: solid 1px #3e3e3e;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 12px;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    transition: 0.2s;
+		width: 12px;
+
+		@include mq('md') {
+			height: 12px;
+			top: 3px;
+			width: 12px;
+		}
+	}
+
+	@include mq('md') {
+		&:hover {
+			&::before {
+				border-color: #4973ff;
+				box-shadow: 0 0 4px #4973ff;
+			}
+		}
+
+		&:active {
+			&::before {
+				background-color: rgba(73, 115, 255, 0.2);
+				box-shadow: none;
+			}
+		}
+	}
+
+  &:after {
+    background: #4973ff;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 6px;
+    left: 3px;
+    opacity: 0;
+    position: absolute;
+    top: 5px;
+    transition: 0.2s;
+		width: 6px;
+
+		@include mq('md') {
+			left: 3px;
+			top: 6px;
+		}
+  }
+}
+
+input[type="radio"]:checked + .contact-radioLabel:after {
+  opacity: 1;
+}
+
+.contact-button {
+  margin-top: 38px;
+  width: 174px;
+
+	@include mq('sm') {
+		font-size: 1.8rem;
+	}
+
+	@include mq('sm') {
+		padding: 0 1.5em;
+		width: 165px;
+		margin-top: 32px;
+	}
+
+	&:disabled {
+    background-color: $bg-clam;
+  }
+}
+
+
+/*===================================
+# footer
+===================================*/
+.footer {
+  text-align: center;
+  & .unit-btn-01{
+    text-align: center;
+    height: 60px;
+    width: 285px;
+    margin: 40px auto 0;
+    & .btn_inner{
+      border-radius: 3px;
+      text-align: center;
+      line-height: 60px;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background: #0d47a1;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 7px;
+      transition: all 0.5s ease;
+      &:hover{
+        opacity: .8;
+      }
+    }
+  }
+}
+
+.box_footer{
+  text-align: center;
+}
+
+.sub_lead{
+  color: #8f8a88;
+  font-size: 15px;
+  letter-spacing: 0.2rem;
+  margin-bottom: 6px;
+}
+
+.company_title{
+  color: #453c38;
+  font-size: 30px;
+  letter-spacing: 0.4rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.sns_icon {
+  margin: 30px auto;
+}
+
+.sns_list{
+  display: flex;
+  width: 900px;
+  margin: auto;
+}
+
+.sns_list_item{
+
+  &:hover{
+    opacity: .8;
+  }
+}
+
+
+
+/*===================================
+# アコーディオン
+===================================*/
+
+.accordion_title {
+  position: relative;
+}
+
+.accordion_content {
+  display: none;
+  padding: 10px 20px 10px 20px;
+  margin: 0px 0px 0px 0px;
+  background-color: #EDF9FF;
+}
+/* 矢印 */
+.accordion_title::before {
+  content: "";
+  position: absolute;
+  right: 1.25em;
+  top: 25%;
+  width: 3px;
+  height: 1em;
+  background-color: #fff;
+  transition: all 0.3s;
+  border-radius: 30px;
+  transform: rotate(-90deg);
+}
+.accordion_title::after {
+  content: "";
+  position: absolute;
+  right: 1.25em;
+  top: 25%;
+  width: 3px;
+  height: 1em;
+  background-color: #fff;
+  transition: all 0.3s;
+  border-radius: 30px;
+}
+.accordion_title.open::after {
+  transform: rotate(-90deg);
+}
+
+.accordion-content p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/*===================================
+# fadeInUp
+===================================*/
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+.inviewfadeInUp {
+	opacity: 0;
+	transform: translate(0, 40px);
+	transition: 1.5s;
+}
+.fadeInUp {
+	opacity: 1.0;
+	transform: translate(0, 0);
 }
