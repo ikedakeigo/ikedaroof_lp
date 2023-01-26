@@ -103,6 +103,30 @@ section{
 }
 
 /*===================================
+# 文字を縦書き
+===================================*/
+.writing{
+  writing-mode: vertical-rl;
+  text-orientation: upright; //英数字も縦書き
+}
+
+/*===================================
+# relative
+===================================*/
+.position_re{
+  position: relative;
+}
+.position_ab{
+  position: absolute;
+}
+/*===================================
+# flex-end
+===================================*/
+.flex_end{
+  display: flex;
+  align-items: flex-end;
+}
+/*===================================
 # padding
 ===================================*/
 .pt100{
@@ -220,6 +244,8 @@ section{
 }
 .about-img{
   width: 48%;
+  box-shadow: 16px 16px 15px -5px #777777;
+border-radius: 10px;
 }
 .pic {
   height: 50vh;
@@ -357,12 +383,12 @@ section{
   }
 
   &__text{
-
+    width: 60%;
   }
 
   &__title{
     position: relative;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 900;
     display: flex;
     align-items: center;
@@ -371,7 +397,7 @@ section{
 
     &::before{
       content: "";
-      background: url(../img/LINE_ALBUM_20230111_230111_2.jpg) no-repeat 50%;
+      background: url(../img/arrow.svg) no-repeat 50%;
       background-size: 100% 100%;
       width: 20px;
       height: 20px;
@@ -405,6 +431,7 @@ section{
 
   &__image{
     margin-left: 1rem;
+    width: 40%;
   }
 }
 
@@ -438,7 +465,7 @@ section{
 }
 
 .alert02_item{
-  width: 30%;
+  width: 40%;
   &__title{
     color: #fff;
     & .t_yellow{
@@ -480,35 +507,36 @@ section{
   margin-bottom: 50px;
 
 &__box {
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
-  position: relative;
 }
   & .s_size{
     background-color: #fff;
     width: 50%;
-    // text-align: center;
     font-size: 50px;
-    position: absolute;
     top: 0;
     left: 20%;
     transform: translate(0%, 25%);
   }
 
   & .t_yellow{
-    display: block;
     color: #EBE304;
   }
 
   & .l_size{
     font-size: 80px;
     text-align: left;
+    box-shadow: 16px 16px 15px -5px #777777;
+    border-radius: 10px;
   }
 
   & .m_size{
+    color: #fff;
     font-size: 60px;
     text-align: left;
     z-index: 9999;
+    box-shadow: 16px 16px 15px -5px #777777;
+    border-radius: 10px;
   }
 }
 
@@ -547,7 +575,7 @@ section{
   }
 
   & .reason_detailtext{
-    text-align: center;
+    font-size: 2rem;
 
     & .t_yellow{
       color: #EBE304;
@@ -555,6 +583,15 @@ section{
    }
 }
 
+.reason_sub_title{
+  width: 100%;
+  top: 0;
+  transform: translateX(40%);
+  background-color: #fff;
+  box-shadow: 26px 28px 15px -5px #777777;
+  border-radius: 10px;
+  text-align: center;
+}
 
 /*===================================
 # service
