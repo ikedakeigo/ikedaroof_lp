@@ -111,6 +111,13 @@ section{
 }
 
 /*===================================
+# テキストサイズ
+===================================*/
+.l_size{
+  font-size: 3rem;
+}
+
+/*===================================
 # relative
 ===================================*/
 .position_re{
@@ -118,6 +125,10 @@ section{
 }
 .position_ab{
   position: absolute;
+
+  @include mq(md) {
+    position: inherit;
+  }
 }
 /*===================================
 # flex-end
@@ -125,6 +136,20 @@ section{
 .flex_end{
   display: flex;
   align-items: flex-end;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+/*===================================
+# text-center
+===================================*/
+.text-center{
+
+  @include mq(md) {
+    text-align: center;
+  }
 }
 /*===================================
 # padding
@@ -297,6 +322,9 @@ border-radius: 10px;
 .tel-phone{
   font-size: 80px;
   color: #EBE304;
+  @include mq(md) {
+    font-size: 60px;
+  }
 }
 
 .lead-link{
@@ -506,10 +534,12 @@ border-radius: 10px;
 .alert02_items{
   display: flex;
   justify-content: space-between;
+
 }
 
 .alert02_item{
   width: 40%;
+
   &__title{
     color: #fff;
     & .t_yellow{
@@ -575,6 +605,10 @@ border-radius: 10px;
     text-align: left;
     box-shadow: 16px 16px 15px -5px #777777;
     border-radius: 10px;
+
+    @include mq(md) {
+      text-align: center;
+    }
   }
 
   & .m_size{
@@ -653,8 +687,8 @@ border-radius: 10px;
   text-align: center;
 
   @include mq(md) {
-    transform: translateX(50%);
-    width: 50%;
+    transform: translate(50%, 50%);
+    width: auto;
   }
 }
 
@@ -741,6 +775,10 @@ border-radius: 10px;
   text-align: center;
   padding: 30px 0;
   margin: 50px 0;
+
+  @include mq(md) {
+    padding: 20px;
+  }
 }
 
 .price_wrap{
