@@ -1,4 +1,14 @@
 @charset "utf-8";
+
+
+/*
+Theme Name:
+Version:1.0.1
+AuthZZ
+*/
+
+
+
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap");
 body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, button, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   border: 0;
@@ -235,7 +245,7 @@ section{
 
 .mainvisual-inner{
   height: 59.846vw;
-  background: url(/img/lp_mv.png) center center/cover no-repeat;
+  background: url(../img/lp_mv.png) center center/cover no-repeat;
 	position: relative;
 }
 
@@ -704,7 +714,12 @@ border-radius: 10px;
 # price
 ===================================*/
 .price{
-  background-color: $bg-clam;
+  // background-color: $bg-clam;
+  background: url(../img/bg_plan.jpeg) center (center / cover);
+
+  & .main-title{
+    color: #fff;
+  }
 }
 
 .price_content {
@@ -712,7 +727,7 @@ border-radius: 10px;
 }
 
 .price_subtitle{
-  color: #595757;
+  color: #fff;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -920,7 +935,7 @@ border-radius: 10px;
 
     @include mq(md) {
       transform: rotate(90deg);
-      top: 105%;
+      top: 100%;
       right: 50%;
       width: 20px;
       height: 20px;
@@ -946,6 +961,10 @@ border-radius: 10px;
   & span {
     margin-right: 1rem;
   }
+
+  @include mq(md) {
+    font-size: 1.4rem;
+  }
 }
 
 .flow_areabox_detail_text{
@@ -959,7 +978,7 @@ border-radius: 10px;
 .has-text-lefted{
   text-align: left;
 @include mq(md) {
-  font-size: 2rem;
+
 }
 }
 
@@ -1061,7 +1080,7 @@ border-radius: 10px;
 
 
 .contact {
-  background: url(../img/LINE_ALBUM_20230111_230111_2.jpg) center (center / cover);
+  background: url(../img/bg_contact.png) center (center / cover);
 	padding: 40px 16px;
 
 	@include mq('sm') {
@@ -1084,6 +1103,9 @@ border-radius: 10px;
     font-size: 80px;
     color: #fff;
     text-align: center;
+    @include mq(md) {
+      font-size: 2rem;
+    }
   }
 }
 
@@ -1097,7 +1119,7 @@ border-radius: 10px;
 }
 
 .contact-header {
-  background-color: #000;
+  background-color: $primary-color;
   box-shadow: 0 0 4px #3e3e3e;
   padding: 32px 16px;
 	position: relative;
@@ -1573,6 +1595,11 @@ input[type="radio"]:checked + .contact-radioLabel:after {
 .contact-button {
   margin-top: 38px;
   width: 174px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 50px auto;
+  display: block;
+  cursor: pointer;
 
 	@include mq('sm') {
 		font-size: 1.8rem;
@@ -1647,13 +1674,15 @@ input[type="radio"]:checked + .contact-radioLabel:after {
   display: flex;
   width: 900px;
   margin: auto;
+  justify-content: center;
   @include mq(md) {
     width: 100%;
   }
 }
 
 .sns_list_item{
-
+  width: 10%;
+  cursor: pointer;
   &:hover{
     opacity: .8;
   }
